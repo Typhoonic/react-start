@@ -1,0 +1,23 @@
+.columnForm {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.span {
+    margin: 0 10px;
+}
+
+@media(max-width: 600px) {
+    .columnForm {
+        flex-direction: column;
+    }
+
+    .columnForm input,
+    .columnForm button {
+        width: 100%;
+        max-width: 320px;
+    }
+}
