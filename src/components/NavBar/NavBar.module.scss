@@ -13,10 +13,25 @@
     }
 
     .about {
-        a {
-            text-decoration: none;
-            color: white;
+        ul {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            gap: 30px;
             margin-right: 50px;
+
+            .linkActive {
+                color: $color-warning;
+            }
+
+            li {
+                a {
+                    color: white;
+                    text-decoration: none;
+                }
+            }
+
         }
     }
 }

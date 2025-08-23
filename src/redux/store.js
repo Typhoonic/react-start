@@ -8,6 +8,8 @@ const reducer = (state, action) => {
             return { ...state, columns: [...state.columns, action.payload] };
         case 'ADD_CARD':
             return { ...state, cards: [...state.cards, action.payload] };
+        case 'ADD_LIST':
+            return { ...state, lists: [...state.lists, action.payload] };
         case "UPDATE_SEARCHSTRING":
             return { ...state, searchString: action.payload }
         default:
@@ -26,9 +28,14 @@ export const getFilteredCards = ({ cards, searchString }, columnId) => cards
     .filter(card => card.columnId === columnId && strContains(card.title, searchString));
 
 export const getAllColumns = (state) => state.columns;
+export const getSearchString = (state) => state.searchString;
+export const getListById = ({ lists }, listId) => lists.find(list => list.id === listId);
+export const getAllLists = (state) => state.lists;
+export const getColumnsByList = ({ columns }, listId) => columns.filter(column => column.listId === listId);
 
 export const addColumn = (payload) => ({ type: 'ADD_COLUMN', payload });
 export const addCard = (payload) => ({ type: 'ADD_CARD', payload });
+export const addList = (payload) => ({ type: 'ADD_LIST', payload });
 export const udpateSearchstring = (payload) => ({ type: 'UPDATE_SEARCHSTRING', payload });
 
 export default store;
