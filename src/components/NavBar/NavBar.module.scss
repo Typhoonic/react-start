@@ -1,0 +1,22 @@
+@import '../../styles/settings.scss';
+
+.navigation {
+    min-height: 50px;
+    background-color: darken($color-dark, 5%);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .menu {
+        font-size: 20px;
+        margin-left: 50px;
+    }
+
+    .about {
+        a {
+            text-decoration: none;
+            color: white;
+            margin-right: 50px;
+        }
+    }
+}
