@@ -1,6 +1,7 @@
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import styles from './Card.module.scss';
-import { deleteCard, udpateIsFavorite } from '../../redux/cardsRedux';
+import { deleteCard, isFavoriteById, udpateIsFavorite } from '../../redux/cardsRedux';
+import clsx from 'clsx';
 
 const Card = props => {
 
@@ -16,11 +17,13 @@ const Card = props => {
         dispatch(deleteCard(props.id));
     }
 
+    const isFavorite = useSelector(state => isFavoriteById(state, props.id))
+
     return (
         <li className={styles.card}>
             {props.children}
             <div>
-                <button onClick={handleSubmitFavorite} className={styles.button}><span className={"fa fa-star-o"} /></button>
+                <button onClick={handleSubmitFavorite} className={styles.button}><span className={clsx("fa fa-star-o", isFavorite ? styles.active : styles.notActive)} /></button>
                 <button onClick={handleSubmitDelete} className={styles.button}><span className={"fa fa-trash"} /></button>
             </div>
         </li>
